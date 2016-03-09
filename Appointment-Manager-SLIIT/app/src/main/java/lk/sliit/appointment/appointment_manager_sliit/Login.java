@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void btnRegisterClick(View view){
-        Intent intent = new Intent(this,AdminDashboard.class);
+        Intent intent = new Intent(this,StudentRegistration.class);
         this.startActivity(intent);
     }
 
@@ -142,6 +142,11 @@ public class Login extends AppCompatActivity {
 
                 }else if(user.getUser_type()== 2) {
                     Intent intent = new Intent(context, LecturerDashboard.class);
+                    context.startActivity(intent);
+                    ((Activity) context).finish();
+                }
+                else if(user.getUser_type()== 1) {
+                    Intent intent = new Intent(context, StudentDashBoard.class);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 }
