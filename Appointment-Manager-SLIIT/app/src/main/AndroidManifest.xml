@@ -3,7 +3,7 @@
     package="lk.sliit.appointment.appointment_manager_sliit">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    >
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,25 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".AdminDashboard"
-            android:label="@string/title_activity_admin_dashboard"
+            android:name=".StudentRegistration"
+            android:label="@string/title_activity_student_registration"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AdminSchedule"
-            android:label="@string/title_activity_admin_schedule"
+            android:name=".StudentHome"
+            android:label="@string/title_activity_student_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AdminTimeAllocate" />
-        <activity android:name=".LecturerDashboard"></activity>
+        <activity
+            android:name=".StudentDashBoard"
+            android:label="@string/title_activity_student_dash_board"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateAppointment"
+            android:label="@string/title_activity_create_appointment"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
