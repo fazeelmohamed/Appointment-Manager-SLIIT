@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lk.sliit.appointment.appointment_manager_sliit">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,6 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AdminDashboard"
+            android:label="@string/title_activity_admin_dashboard"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AdminSchedule"
+            android:label="@string/title_activity_admin_schedule"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AdminTimeAllocate" />
+        <activity android:name=".LecturerDashboard"></activity>
     </application>
 
 </manifest>
