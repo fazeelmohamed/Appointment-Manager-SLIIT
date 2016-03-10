@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 public class AdminSchedule extends AppCompatActivity {
 
@@ -16,6 +17,9 @@ public class AdminSchedule extends AppCompatActivity {
         setContentView(R.layout.activity_admin_schedule);
         //View b = findViewById(R.id.btnMon);
         //b.setVisibility(View.GONE);
+
+        /*SubjectLecturer subjectLecturer = (SubjectLecturer) getIntent().getSerializableExtra("subLecKey");
+        Toast.makeText(this,subjectLecturer.getTxtLecturer(),Toast.LENGTH_LONG).show();*/
 
 
     }
@@ -54,6 +58,8 @@ public class AdminSchedule extends AppCompatActivity {
         Intent intent = new Intent(this,AdminTimeAllocate.class);
         this.startActivity(intent);
     }
+
+
 
 
 }
