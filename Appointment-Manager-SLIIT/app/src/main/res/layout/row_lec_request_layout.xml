@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="50dp"
+    android:background="@color/selector_color">
+    <!--android:descendantFocusability="blocksDescendants"-->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_appID"
+        android:layout_alignParentLeft="true"
+        android:text="ID"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_date"
+        android:layout_alignParentLeft="true"
+        android:text="Date"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_time"
+        android:layout_alignParentLeft="true"
+        android:text="Time"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_disc"
+        android:layout_alignParentLeft="true"
+        android:text="Description"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_stName"
+        android:layout_alignParentLeft="true"
+        android:text="st name"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_stYear"
+        android:layout_alignParentLeft="true"
+        android:text="St Year"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_stSem"
+        android:layout_alignParentLeft="true"
+        android:text="St Sem"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tvw_title"
+        android:layout_alignParentLeft="true"
+        android:text="Title"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+
+
+</RelativeLayout>
