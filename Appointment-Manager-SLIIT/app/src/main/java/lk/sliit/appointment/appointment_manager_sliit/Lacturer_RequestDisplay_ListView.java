@@ -67,13 +67,13 @@ public class Lacturer_RequestDisplay_ListView extends AppCompatActivity {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
                         //Yes button clicked
-                        Toast.makeText(Lacturer_RequestDisplay_ListView.this, "You clicked YES",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Lacturer_RequestDisplay_ListView.this, "You have accepted",Toast.LENGTH_SHORT).show();
                         updateAppointmentTable(tvw_appid.getText().toString(),"1");
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
                         //No button clicked
-                        Toast.makeText(Lacturer_RequestDisplay_ListView.this, "You clicked NO",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Lacturer_RequestDisplay_ListView.this, "You have rejected",Toast.LENGTH_SHORT).show();
                         updateAppointmentTable(tvw_appid.getText().toString(), "2");
                         break;
                 }
@@ -90,7 +90,7 @@ public class Lacturer_RequestDisplay_ListView extends AppCompatActivity {
                 TextView tvw_styear = (TextView)viewGroup.findViewById(R.id.tvw_stYear);
                 TextView tvw_stsem = (TextView)viewGroup.findViewById(R.id.tvw_stSem);
                 TextView tvw_disc = (TextView)viewGroup.findViewById(R.id.tvw_disc);
-                         tvw_appid = (TextView)viewGroup.findViewById(R.id.tvw_appID);
+                tvw_appid = (TextView)viewGroup.findViewById(R.id.tvw_appID);
                 TextView tvw_date = (TextView)viewGroup.findViewById(R.id.tvw_date);
                 TextView tvw_time = (TextView)viewGroup.findViewById(R.id.tvw_time);
                 //Toast.makeText(Lacturer_RequestDisplay_ListView.this, textView.getText().toString(),Toast.LENGTH_SHORT).show();

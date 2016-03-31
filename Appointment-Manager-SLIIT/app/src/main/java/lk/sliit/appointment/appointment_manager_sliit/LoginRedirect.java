@@ -25,12 +25,12 @@ public class LoginRedirect {
             jsonObject = new JSONObject(result);
             jsonArray = jsonObject.getJSONArray("server_response");
 
-                    JSONObject JO = jsonArray.getJSONObject(0);
-                    id = JO.getInt("id");
-                    name = JO.getString("name");
-                    email = JO.getString("email");
-                    user_type = JO.getInt("user_type");
-                    bool_result = JO.getBoolean("isLogin");
+            JSONObject JO = jsonArray.getJSONObject(0);
+            id = JO.getInt("id");
+            name = JO.getString("name");
+            email = JO.getString("email");
+            user_type = JO.getInt("user_type");
+            bool_result = JO.getBoolean("isLogin");
 
 
 

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -134,7 +135,7 @@ public class Login extends AppCompatActivity {
 
             if(user.isLogin_status() == true){
 
-                Toast.makeText(context, "Login success", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Login success", Toast.LENGTH_SHORT).show();
                 if(user.getUser_type()== 3) {
                     Intent intent = new Intent(context, AdminDashboard.class);
                     context.startActivity(intent);
@@ -142,6 +143,7 @@ public class Login extends AppCompatActivity {
 
                 }else if(user.getUser_type()== 2) {
                     Intent intent = new Intent(context, LecturerDashboard.class);
+                    intent.putExtra("user",user);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 }
@@ -151,7 +153,7 @@ public class Login extends AppCompatActivity {
                     ((Activity) context).finish();
                 }
             }else {
-                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
             }
 
 

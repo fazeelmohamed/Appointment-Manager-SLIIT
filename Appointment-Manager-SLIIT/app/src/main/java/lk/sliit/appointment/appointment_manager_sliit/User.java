@@ -1,9 +1,11 @@
 package lk.sliit.appointment.appointment_manager_sliit;
 
+import java.io.Serializable;
+
 /**
  * Created by User G on 3/9/2016.
  */
-public class User {
+public class User implements Serializable {
     int id,user_type;
     private String name,email;
     boolean login_status;
