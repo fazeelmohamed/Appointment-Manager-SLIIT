@@ -118,16 +118,6 @@
                 android:background="@color/selector_color"
                 android:id="@+id/btnSun"
                 android:onClick="btnSunClick"/>
-            <Button
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Go to Home"
-                android:gravity="center"
-                android:background="@color/selector_color"
-                android:id="@+id/btnHome"
-                android:onClick="btnHomeClick"/>
 
 
 

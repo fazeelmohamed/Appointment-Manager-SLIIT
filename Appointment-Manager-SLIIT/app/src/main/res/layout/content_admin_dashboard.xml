@@ -23,14 +23,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etLecturer"
+            android:id="@+id/txtLecturer"
             android:hint="Lecturer name" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etEmail"
-            android:layout_below="@+id/etLecturer"
+            android:id="@+id/txtEmail1"
+            android:layout_below="@+id/txtLecturer"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:hint="Email" />
@@ -38,8 +38,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etPassword"
-            android:layout_below="@+id/etEmail"
+            android:id="@+id/txtPass"
+            android:layout_below="@+id/txtEmail1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:hint="Password" />
@@ -47,9 +47,9 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etConfPass"
+            android:id="@+id/editText4"
             android:hint="Confirm password"
-            android:layout_below="@+id/etPassword"
+            android:layout_below="@+id/txtPass"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -96,7 +96,7 @@
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="SE III"
-                        android:layout_toRightOf="@+id/ckbSPDC"
+                        android:layout_toRightOf="@+id/ckbSubject1"
                         android:id="@+id/ckbSE3"
                         android:checked="false" />
 
@@ -104,7 +104,7 @@
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="HCI"
-                        android:layout_toRightOf="@+id/ckbSE3"
+                        android:layout_toRightOf="@+id/ckbSubject2"
                         android:id="@+id/ckbHCI"
                         android:checked="false"
                         android:layout_column="2" />
@@ -124,8 +124,8 @@
                     <CheckBox
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
-                        android:text="MAD"
-                        android:layout_toRightOf="@+id/ckbSEP"
+                        android:text="Subject 5"
+                        android:layout_toRightOf="@+id/ckbSubject4"
                         android:id="@+id/ckbMAD"
                         android:checked="false" />
 
@@ -133,7 +133,7 @@
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="SE II"
-                        android:layout_toRightOf="@+id/ckbMAD"
+                        android:layout_toRightOf="@+id/ckbSubject5"
                         android:id="@+id/ckbSE2"
                         android:checked="false"
                         android:layout_column="2" />
@@ -154,15 +154,15 @@
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="ITA"
-                        android:layout_toRightOf="@+id/ckbITP"
-                        android:id="@+id/ckbITA"
+                        android:layout_toRightOf="@+id/ckbSubject7"
+                        android:id="@+id/ckbSubject8"
                         android:checked="false" />
 
                     <CheckBox
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="PS"
-                        android:layout_toRightOf="@+id/ckbITA"
+                        android:layout_toRightOf="@+id/ckbSubject8"
                         android:id="@+id/ckbPS"
                         android:checked="false"
                         android:layout_column="2" />
@@ -183,7 +183,7 @@
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="ST II"
-                        android:layout_toRightOf="@+id/ckbSPD"
+                        android:layout_toRightOf="@+id/ckbSubject10"
                         android:id="@+id/ckbST2"
                         android:checked="false" />
 
@@ -191,7 +191,7 @@
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:text="ST I"
-                        android:layout_toRightOf="@+id/ckbST2"
+                        android:layout_toRightOf="@+id/ckbSubject11"
                         android:id="@+id/ckbST1"
                         android:checked="false"
                         android:layout_column="2" />
@@ -216,25 +216,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Logout"
-                    android:id="@+id/btnLogout"
-                    android:layout_column="0"
-                    android:onClick="btnLogoutClick" />
-
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="240dp"
                     />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Next"
-                    android:id="@+id/btnNext1"
+                    android:id="@+id/btnNext"
                     android:layout_column="0"
-                    android:onClick="btnNext1Click" />
+                    android:onClick="btnRegisterClick" />
             </TableRow>
         </TableLayout>
     </RelativeLayout>

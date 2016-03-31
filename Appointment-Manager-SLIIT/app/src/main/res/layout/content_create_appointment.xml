@@ -8,54 +8,45 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="lk.sliit.appointment.appointment_manager_sliit.CreateAppointment"
-    tools:showIn="@layout/activity_create_appointment">
+    tools:showIn="@layout/activity_create_appointment"
+    android:weightSum="1">
 
-    <ScrollView
+
+    <Spinner
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/spSubject"
+        android:layout_gravity="center_horizontal"
+        android:spinnerMode="dropdown"
+        android:layout_alignParentTop="true" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spLecturer"
+        android:layout_gravity="center_horizontal"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/spSubject"
+        android:layout_centerHorizontal="true" />
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:id="@+id/spinner"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check"
+        android:id="@+id/btnCheck"
+        android:onClick="onCheck"
+        android:layout_below="@+id/calendarView1"
+        android:layout_centerHorizontal="true" />
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:id="@+id/spinner2"
-                android:layout_below="@+id/spinner"
-                android:layout_centerHorizontal="true" />
-
-            <DatePicker
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:id="@+id/datePicker"
-                android:layout_below="@+id/spinner2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:inputType="textPersonName"
-                android:text="Name"
-                android:ems="10"
-                android:id="@+id/editText"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-
-        </LinearLayout>
-    </ScrollView>
-
+    <CalendarView
+        android:layout_width="550dp"
+        android:layout_height="310dp"
+        android:id="@+id/calendarView1"
+        android:layout_below="@+id/spLecturer"
+        android:layout_alignRight="@+id/spLecturer"
+        android:layout_alignEnd="@+id/spLecturer" />
 
 </RelativeLayout>

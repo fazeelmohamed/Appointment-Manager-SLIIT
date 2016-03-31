@@ -1,6 +1,9 @@
 package lk.sliit.appointment.appointment_manager_sliit;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +13,19 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class StudentRegistration extends AppCompatActivity {
 
@@ -20,6 +36,7 @@ public class StudentRegistration extends AppCompatActivity {
     String name, email, password,confirmPassword;
     String type;
     String year, semester;
+    boolean status=true;
 
 
     @Override
@@ -46,28 +63,132 @@ public class StudentRegistration extends AppCompatActivity {
         spinnerYear = (Spinner)findViewById(R.id.spinnerYear);
         spinnerSemester = (Spinner)findViewById(R.id.spinnerSemester);
 
-
-
-
     }
+
 
     public void OnRegister(View view){
 
         name = etName.getText().toString();
         email = etEmail.getText().toString();
         password = etPassword.getText().toString();
-        //confirmPassword = etConfirmPassword.getText().toString();
+        confirmPassword = etConfirmPassword.getText().toString();
         year = spinnerYear.getSelectedItem().toString();
         semester = spinnerSemester.getSelectedItem().toString();
 
 
-        type = "student_register";
 
-        BackgroundWorker bw = new BackgroundWorker(this);
-        bw.execute(type,name, email, password, year, semester);
+        if(name.length() == 0){
+            Toast.makeText(view.getContext(), "Please Provide Name.", Toast.LENGTH_SHORT).show();
+            status =false;
+        }
 
-        Intent intent = new Intent(this,StudentHome.class);
-        this.startActivity(intent);
+        if(email.length() == 0){
+            Toast.makeText(view.getContext(), "Please Provide Email.", Toast.LENGTH_SHORT).show();
+            status =false;
+        }
+
+       // if()///email validation
+
+
+        if(!password.equals(confirmPassword.toString()))
+        {
+            Toast.makeText(view.getContext(), "Password not match.", Toast.LENGTH_SHORT).show();
+            status =false;
+        }
+
+
+        if(status) {
+            BackgroundWorker bw = new BackgroundWorker(this);
+            bw.execute(name, email, password, year, semester);
+
+            Intent intent = new Intent(this, StudentHome.class);
+            this.startActivity(intent);
+        }
+    }
+
+    public class BackgroundWorker extends AsyncTask<String,Void,String> {
+        Context context;
+       // AlertDialog alertDialog;
+
+        BackgroundWorker(Context ct){
+            context = ct;
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            //String type = params[0];
+            String reg_url = "http://quick-appointment.b2creations.net/student_register.php";
+
+           // if(type.equals("student_register")){
+                try {
+                    String name = params[0];
+                    String email = params[1];
+                    String password = params[2];
+                    String year = params[3];
+                    String semester = params[4];
+
+
+                    URL url = new URL(reg_url);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setDoInput(true);
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                    String post_date = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&"
+                            + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&"
+                            + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
+                            + URLEncoder.encode("year", "UTF-8") + "=" + URLEncoder.encode(year, "UTF-8") + "&"
+                            + URLEncoder.encode("semester", "UTF-8") + "=" + URLEncoder.encode(semester, "UTF-8");
+                    bufferedWriter.write(post_date);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                    outputStream.close();
+                    InputStream inputStream = httpURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder builder = new StringBuilder();
+                    String result = "";
+                    String line = "";
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        builder.append(line+"");
+                    }
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                    return builder.toString().trim();
+
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            return null;
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            //alertDialog.setMessage(result);
+            //alertDialog.show();
+            Toast.makeText(context, "Account created successfully.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

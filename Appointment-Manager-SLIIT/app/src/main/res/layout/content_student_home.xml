@@ -23,9 +23,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnHomeAdd"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="102dp"
         android:onClick="onAddAppointment" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Welcome student.This page appear only first time"
+        android:id="@+id/textView6"
+        android:layout_gravity="center|left"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="143dp" />
+
 </RelativeLayout>

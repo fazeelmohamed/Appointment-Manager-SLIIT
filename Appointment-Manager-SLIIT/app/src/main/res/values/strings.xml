@@ -9,4 +9,7 @@
     <string name="title_activity_student_home">Home</string>
     <string name="title_activity_student_dash_board">DashBoard</string>
     <string name="title_activity_create_appointment">Create Appointment</string>
+    <string name="title_activity_create_appointment1">Provide Details</string>
+    <string name="title_activity_provide_appointment_details">Provide Details</string>
+    <string name="title_activity_appointment_contents">Enter Details</string>
 </resources>
