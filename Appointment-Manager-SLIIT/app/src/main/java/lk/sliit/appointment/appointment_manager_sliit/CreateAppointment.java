@@ -36,6 +36,7 @@ public class CreateAppointment extends AppCompatActivity {
     Spinner spSubject,spLecturer;
     String chosedSubject;
     String chosedLectName;
+    String chosedDateString;
     RequestQueue requestQueue;
     String url = "http://quick-appointment.b2creations.net/getLecturerNames.php";
     test stringRequest;
@@ -130,7 +131,7 @@ public class CreateAppointment extends AppCompatActivity {
                 int dayOfWeek = chosedDate.get(Calendar.DAY_OF_WEEK);
 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                dateFormat.format(chosedDate.getTime());   //get selected date
+                chosedDateString = dateFormat.format(chosedDate.getTime());   //get selected date
 
                 if(chosedDate.before(currentDate)){
                     Toast.makeText(CreateAppointment.this,"Invalid Date.",Toast.LENGTH_SHORT).show();
@@ -138,7 +139,7 @@ public class CreateAppointment extends AppCompatActivity {
 
 
 
-               // Toast.makeText(CreateAppointment.this,chosedDate,Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateAppointment.this,chosedDateString,Toast.LENGTH_SHORT).show();
 
 
                 switch (dayOfWeek)
@@ -178,9 +179,10 @@ public class CreateAppointment extends AppCompatActivity {
     public void onCheck(View view){
 
         Intent intent  = new Intent(this,ProvideAppointmentDetails_time.class);
-        intent.putExtra("subj_name",chosedSubject);
+        //  intent.putExtra("subj_name",chosedSubject);
         intent.putExtra("lect_name",chosedLectName);
         intent.putExtra("day_of_week",dayOfWeekString);
+        intent.putExtra("chosed_date",chosedDateString);
         this.startActivity(intent);
     }
 }

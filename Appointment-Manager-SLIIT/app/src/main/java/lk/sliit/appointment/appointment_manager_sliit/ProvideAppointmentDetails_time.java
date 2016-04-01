@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 public class ProvideAppointmentDetails_time extends AppCompatActivity {
-    String lect_name,dayOfWeek;
+    String lect_name,dayOfWeek,chosedDate;
     RequestQueue requestQueue;
     test test;
     String url = "http://quick-appointment.b2creations.net/getFreeTimeSlot.php";
@@ -47,6 +47,8 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
         Intent intent = getIntent();
         lect_name = intent.getStringExtra("lect_name");
         dayOfWeek = intent.getStringExtra("day_of_week");
+        chosedDate = intent.getStringExtra("chosed_date");
+
 
         requestQueue = Volley.newRequestQueue(this);
         HashMap<String,String> hashMap = new HashMap<String,String>();
@@ -57,49 +59,49 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 int count = 0;
-                    try{
-                        JSONArray jsonArray = response.getJSONArray("freeTimeSlot");
-                        while (count < jsonArray.length()) {
-                            JSONObject jo = jsonArray.getJSONObject(count);
-                            freeTime = jo.getString("free_time");
+                try{
+                    JSONArray jsonArray = response.getJSONArray("freeTimeSlot");
+                    while (count < jsonArray.length()) {
+                        JSONObject jo = jsonArray.getJSONObject(count);
+                        freeTime = jo.getString("free_time");
 
-                            count++;
-                        }
+                        count++;
+                    }
 
-                        getFreeTimeSlots(freeTime);
+                    getFreeTimeSlots(freeTime);
 
-                        radioGroup = (RadioGroup)findViewById(R.id.radiogroup);
-                        Button button = (Button)findViewById(R.id.button);
-                        button.setOnClickListener(new View.OnClickListener(){
+                    radioGroup = (RadioGroup)findViewById(R.id.radiogroup);
+                    Button button = (Button)findViewById(R.id.button);
+                    button.setOnClickListener(new View.OnClickListener(){
 
-                            @Override
-                            public void onClick(View v) {
+                        @Override
+                        public void onClick(View v) {
 
-                                if(radioGroup.getCheckedRadioButtonId() == -1)
-                                {
-                                    Toast.makeText(ProvideAppointmentDetails_time.this, "Please select your convenient time", Toast.LENGTH_SHORT).
+                            if(radioGroup.getCheckedRadioButtonId() == -1)
+                            {
+                                Toast.makeText(ProvideAppointmentDetails_time.this, "Please select your convenient time", Toast.LENGTH_SHORT).
                                         show();
-                                }
-                                else
-                                {
-                                    int selectedId = radioGroup.getCheckedRadioButtonId();
-                                    radioButton = (RadioButton)findViewById(selectedId);
+                            }
+                            else
+                            {
+                                int selectedId = radioGroup.getCheckedRadioButtonId();
+                                radioButton = (RadioButton)findViewById(selectedId);
 
-                                    StringTokenizer st1 = new StringTokenizer((String) radioButton.getText(),"-");
-                                    chosedTime = st1.nextToken();  //tokenize selected time.Eg:11.30-12.00 => 11.30
+                                StringTokenizer st1 = new StringTokenizer((String) radioButton.getText(),"-");
+                                chosedTime = st1.nextToken();  //tokenize selected time.Eg:11.30-12.00 => 11.30
 
-                                    btnClick();
-
-                                }
-
-
+                                btnClick();
 
                             }
-                        });
 
-                    }catch (JSONException e){
-                        e.printStackTrace();
-                    }
+
+
+                        }
+                    });
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
 
             }
         }, new Response.ErrorListener() {
@@ -113,9 +115,11 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
     }
 
     public void btnClick(){
-        Toast.makeText(this, "on confirm", Toast.LENGTH_SHORT).show();
+
         Intent intent = new Intent(this,AppointmentContents.class);
-        intent.putExtra("test",chosedTime);
+        intent.putExtra("chosed_time",chosedTime);
+        intent.putExtra("lect_name", lect_name);
+        intent.putExtra("chosed_date",chosedDate);
         this.startActivity(intent);
 
 
