@@ -34,7 +34,6 @@ public class StudentRegistration extends AppCompatActivity {
     EditText etName, etEmail, etPassword, etConfirmPassword;
     Spinner spinnerYear, spinnerSemester;
     String name, email, password,confirmPassword;
-    String type;
     String year, semester;
     boolean status=true;
 
@@ -75,6 +74,8 @@ public class StudentRegistration extends AppCompatActivity {
         year = spinnerYear.getSelectedItem().toString();
         semester = spinnerSemester.getSelectedItem().toString();
 
+        boolean emailValidStatus;
+
 
 
         if(name.length() == 0){
@@ -87,7 +88,12 @@ public class StudentRegistration extends AppCompatActivity {
             status =false;
         }
 
-       // if()///email validation
+        emailValidStatus = isValidEmail(email);
+
+        if(!emailValidStatus){
+            Toast.makeText(view.getContext(), "Invalid email address.", Toast.LENGTH_SHORT).show();
+            status =false;
+        }
 
 
         if(!password.equals(confirmPassword.toString()))
@@ -101,10 +107,22 @@ public class StudentRegistration extends AppCompatActivity {
             BackgroundWorker bw = new BackgroundWorker(this);
             bw.execute(name, email, password, year, semester);
 
+            Intent intent = new Intent(this,StudentHome.class);
+            this.startActivity(intent);
+        }
+
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        boolean retult;
+        if (target == null) {
+            retult = false;
+            return retult;
+        } else {
+            retult = android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+            return retult;
 
         }
-        Intent intent = new Intent(this,StudentHome.class);
-        this.startActivity(intent);
     }
 
     public class BackgroundWorker extends AsyncTask<String,Void,String> {
@@ -123,10 +141,8 @@ public class StudentRegistration extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            //String type = params[0];
             String reg_url = "http://quick-appointment.b2creations.net/student_register.php";
 
-           // if(type.equals("student_register")){
                 try {
                     String name = params[0];
                     String email = params[1];
@@ -154,7 +170,6 @@ public class StudentRegistration extends AppCompatActivity {
                     InputStream inputStream = httpURLConnection.getInputStream();
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     StringBuilder builder = new StringBuilder();
-                    String result = "";
                     String line = "";
 
                     while ((line = bufferedReader.readLine()) != null) {

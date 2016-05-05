@@ -12,4 +12,5 @@
     <string name="title_activity_create_appointment1">Provide Details</string>
     <string name="title_activity_provide_appointment_details">Provide Details</string>
     <string name="title_activity_appointment_contents">Enter Details</string>
+    <string name="title_activity_student_view_appointments">View Appointments</string>
 </resources>

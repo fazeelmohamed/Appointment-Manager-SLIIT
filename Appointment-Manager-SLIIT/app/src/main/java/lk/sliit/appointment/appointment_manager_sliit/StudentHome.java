@@ -10,6 +10,7 @@ import android.view.View;
 
 public class StudentHome extends AppCompatActivity {
 
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,13 @@ public class StudentHome extends AppCompatActivity {
     public void onAddAppointment(View view){
 
         Intent intent = new Intent(this, CreateAppointment.class);
+        intent.putExtra("user",user);
+        this.startActivity(intent);
+
+    }
+
+    public void btnLogout(View view){
+        Intent intent = new Intent(this, Login.class);
         this.startActivity(intent);
 
     }

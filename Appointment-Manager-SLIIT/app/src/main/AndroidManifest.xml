@@ -47,7 +47,7 @@
         <activity android:name=".AdminTimeAllocate" />
         <activity android:name=".LecturerDashboard" />
         <activity android:name=".Lacturer_RequestDisplay_ListView" />
-        <activity android:name=".LecturerAppointmentDetails"></activity>
+        <activity android:name=".LecturerAppointmentDetails" />
         <activity
             android:name=".ProvideAppointmentDetails_time"
             android:label="@string/title_activity_provide_appointment_details"
@@ -55,7 +55,11 @@
         <activity
             android:name=".AppointmentContents"
             android:label="@string/title_activity_appointment_contents"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".student_viewAppointments"
+            android:label="@string/title_activity_student_view_appointments"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

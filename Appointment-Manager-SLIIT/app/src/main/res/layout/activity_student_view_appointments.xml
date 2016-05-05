@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
+    tools:context="lk.sliit.appointment.appointment_manager_sliit.student_viewAppointments">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="#0c0040"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Appointments"
+        android:id="@+id/tvw_AppHeadings" />
+    <ListView
+        android:layout_below="@+id/tvw_AppHeadings"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/listview"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            style="?android:attr/bottomMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:text="Home"
+            android:background="@color/selector_color"
+            android:onClick="btnGoHomeClick"
+            android:id="@+id/btnGoHome" />
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+
+
+
+   

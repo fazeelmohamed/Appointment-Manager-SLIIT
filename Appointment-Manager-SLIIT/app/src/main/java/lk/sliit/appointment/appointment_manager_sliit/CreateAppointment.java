@@ -109,32 +109,6 @@ public class CreateAppointment extends AppCompatActivity {
                             }
 
 
-
-
-                            /*spLecturer = (Spinner) findViewById(R.id.spLecturer);
-
-                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(CreateAppointment.this, android.R.layout.simple_spinner_item, lect_name);
-                            adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            spLecturer.setAdapter(adapter2);
-
-                            spLecturer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                @Override
-                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                                    chosedLectName = spLecturer.getSelectedItem().toString();
-                                    Toast.makeText(CreateAppointment.this, chosedLectName, Toast.LENGTH_SHORT).show();
-
-                                }
-
-                                @Override
-                                public void onNothingSelected(AdapterView<?> parent) {
-
-                                }
-                            });*/
-
-
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

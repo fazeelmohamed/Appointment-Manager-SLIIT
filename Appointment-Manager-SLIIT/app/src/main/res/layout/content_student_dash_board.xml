@@ -15,12 +15,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="Create Appointment"
         android:id="@+id/btnDashboardAdd"
-        android:layout_alignParentBottom="true"
+        android:onClick="onAddAppointment"
+        android:layout_below="@+id/txtWelcome"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="153dp"
-        android:onClick="onAddAppointment" />
+        android:layout_marginTop="82dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,4 +30,24 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="77dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Appointment"
+        android:id="@+id/button3"
+        android:onClick="btnViewAppointment"
+        android:layout_below="@+id/btnDashboardAdd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/button4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="btnLogout" />
 </RelativeLayout>
