@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg"
+    android:background="@color/lightgreen_bg_color"
     tools:context="lk.sliit.appointment.appointment_manager_sliit.LecturerDashboard">
 
     <LinearLayout
@@ -32,7 +32,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Appointments"
             android:gravity="center"
-            android:background="@color/selector_color"
+            android:background="@drawable/button_boarder"
             android:id="@+id/btnAppointment"
             android:onClick="btnAppointmentClick"/>
 
@@ -43,7 +43,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Requests"
             android:gravity="center"
-            android:background="@color/selector_color"
+            android:background="@drawable/button_boarder"
             android:id="@+id/btnRequest"
             android:onClick="btnRequestClick"/>
 
@@ -52,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="Logout"
+            android:background="@drawable/button_boarder"
             android:id="@+id/btnLogout"
             android:layout_column="0"
             android:onClick="btnLecLogoutClick" />

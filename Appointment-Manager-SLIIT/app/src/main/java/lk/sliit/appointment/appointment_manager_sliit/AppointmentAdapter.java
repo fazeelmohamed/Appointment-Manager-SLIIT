@@ -74,7 +74,7 @@ public class AppointmentAdapter extends ArrayAdapter {
         contactHolder.disc.setText(appointment.getDescription());
         contactHolder.stYear.setText(appointment.getSt_year());
         contactHolder.stname.setText(appointment.getSt_name());
-        contactHolder.stSem.setText(appointment.getApp_id());
+        contactHolder.stSem.setText(appointment.getSt_sem());
 
 
         return row;

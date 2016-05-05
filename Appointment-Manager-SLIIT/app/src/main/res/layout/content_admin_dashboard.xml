@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg"
+    android:background="@color/lightgreen_bg_color"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="lk.sliit.appointment.appointment_manager_sliit.AdminDashboard"
     tools:showIn="@layout/activity_admin_dashboard">
@@ -42,6 +42,8 @@
             android:layout_below="@+id/etEmail"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:password="true"
+            android:textSize="16dp"
             android:hint="Password" />
 
         <EditText
@@ -49,6 +51,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/etConfPass"
             android:hint="Confirm password"
+            android:password="true"
+            android:textSize="16dp"
             android:layout_below="@+id/etPassword"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -222,6 +226,7 @@
                     android:text="Logout"
                     android:id="@+id/btnLogout"
                     android:layout_column="0"
+                    android:background="@drawable/button_boarder"
                     android:onClick="btnLogoutClick" />
 
                 <TextView
@@ -234,6 +239,7 @@
                     android:text="Next"
                     android:id="@+id/btnNext1"
                     android:layout_column="0"
+                    android:background="@drawable/button_boarder"
                     android:onClick="btnNext1Click" />
             </TableRow>
         </TableLayout>

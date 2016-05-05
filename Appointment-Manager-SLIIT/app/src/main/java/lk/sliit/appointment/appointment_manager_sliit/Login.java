@@ -53,8 +53,14 @@ public class Login extends AppCompatActivity {
         String email = txtEmail.getText().toString();
         String password = txtPassword.getText().toString();
         String type = "login";
-        BackgroundTask backgroundTask = new BackgroundTask(this);
-        backgroundTask.execute(type,email,password);
+
+        if(email.equals("")||password.equals("")){
+            Toast.makeText(this,"Fields can not be empty",Toast.LENGTH_LONG).show();
+        }else{
+            BackgroundTask backgroundTask = new BackgroundTask(this);
+            backgroundTask.execute(type,email,password);
+        }
+
 
 
 

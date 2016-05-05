@@ -94,6 +94,14 @@ public class AdminDashboard extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
 
     public void btnNext1Click(View view){
 
@@ -142,60 +150,66 @@ public class AdminDashboard extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(),txtLecturer.getText().toString(),Toast.LENGTH_LONG).show();
 
         if(!lacturer.equals("") && !email.equals("") && !password.equals("") && !confirmPassword.equals("") && !subjectStr.equals("")){
-            if (txtPassword.getText().toString().equals(txtConfirmPassword.getText().toString())){
+          if(isValidEmail(email)) {
+              if (txtPassword.getText().toString().equals(txtConfirmPassword.getText().toString())) {
 
-                Map<String, String>  map = new HashMap<String, String>();
-                map.put("Lecturer",txtLecturer.getText().toString());
-                map.put("Email",txtEmail.getText().toString());
-                map.put("Password",txtPassword.getText().toString());
-                map.put("subjectStr",subjectStr);
-                subjectStr = "";//clear the str
+                  Map<String, String> map = new HashMap<String, String>();
+                  map.put("Lecturer", txtLecturer.getText().toString());
+                  map.put("Email", txtEmail.getText().toString());
+                  map.put("Password", txtPassword.getText().toString());
+                  map.put("subjectStr", subjectStr);
+                  subjectStr = "";//clear the str
 
-                //RequestQueue mRequestQueue = Volley.newRequestQueue(this);
-                requestQueue = Volley.newRequestQueue(this);
-                // prepare the Request
-                CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, dashboard_url, map, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
+                  //RequestQueue mRequestQueue = Volley.newRequestQueue(this);
+                  requestQueue = Volley.newRequestQueue(this);
+                  // prepare the Request
+                  CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, dashboard_url, map, new Response.Listener<JSONObject>() {
+                      @Override
+                      public void onResponse(JSONObject response) {
 
-                        try {
+                          try {
 
-                            String lid = response.getString("lidvalue");
-                            String[] dayArray = new String[7];
-                            dayArray[0] = response.getString("mon");dayArray[1] = response.getString("tue");
-                            dayArray[2] = response.getString("wed");dayArray[3] = response.getString("thu");
-                            dayArray[4] = response.getString("fri");dayArray[5] = response.getString("sat");
-                            dayArray[6] = response.getString("sun");
+                              String lid = response.getString("lidvalue");
+                              String[] dayArray = new String[7];
+                              dayArray[0] = response.getString("mon");
+                              dayArray[1] = response.getString("tue");
+                              dayArray[2] = response.getString("wed");
+                              dayArray[3] = response.getString("thu");
+                              dayArray[4] = response.getString("fri");
+                              dayArray[5] = response.getString("sat");
+                              dayArray[6] = response.getString("sun");
 
-                            if(response.names().get(0).equals("successes")){
-                                Toast.makeText(getApplicationContext(),"SUCCESS "+response.getString("successes"),Toast.LENGTH_LONG).show();
-                                callAdminScheduleActivity(lid,dayArray);
-                            }else{
-                                Toast.makeText(getApplicationContext(),"Error "+response.getString("error"),Toast.LENGTH_LONG).show();
-                            }
+                              if (response.names().get(0).equals("successes")) {
+                                  Toast.makeText(getApplicationContext(), "SUCCESS " + response.getString("successes"), Toast.LENGTH_LONG).show();
+                                  callAdminScheduleActivity(lid, dayArray);
+                              } else {
+                                  Toast.makeText(getApplicationContext(), "Error " + response.getString("error"), Toast.LENGTH_LONG).show();
+                              }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                        new Response.ErrorListener()
-                        {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                //Log.d("Error.Response", );
-                            }
-                        });
+                          } catch (JSONException e) {
+                              e.printStackTrace();
+                          }
+                      }
+                  },
+                          new Response.ErrorListener() {
+                              @Override
+                              public void onErrorResponse(VolleyError error) {
+                                  //Log.d("Error.Response", );
+                              }
+                          });
 
-                // add it to the RequestQueue
-                requestQueue.add(jsObjRequest);
-                //AppController.getInstance().addToRequestQueue(jsObjRequest);
+                  // add it to the RequestQueue
+                  requestQueue.add(jsObjRequest);
+                  //AppController.getInstance().addToRequestQueue(jsObjRequest);
 
-            }else{
-                Toast.makeText(getApplicationContext(),"Password and Confirm Password doesn't match",Toast.LENGTH_LONG).show();
-            }
+              } else {
+                  Toast.makeText(getApplicationContext(), "Password and Confirm Password doesn't match", Toast.LENGTH_LONG).show();
+              }
+          }else {
+              Toast.makeText(getApplicationContext(),"Invalid email address",Toast.LENGTH_LONG).show();
+          }
         }else{
-            Toast.makeText(getApplicationContext(),"Feilds can not be null",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Fields can not be null",Toast.LENGTH_LONG).show();
         }
 
 
