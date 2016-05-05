@@ -29,12 +29,13 @@ import java.util.StringTokenizer;
 public class ProvideAppointmentDetails_time extends AppCompatActivity {
     String lect_name,dayOfWeek,chosedDate;
     RequestQueue requestQueue;
-    test test;
+    CustomRequest customRequest;
     String url = "http://quick-appointment.b2creations.net/getFreeTimeSlot.php";
     String freeTime;
     RadioButton radioButton;
     RadioGroup radioGroup;
     String chosedTime;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
+        user = (User) intent.getExtras().getSerializable("user");
         lect_name = intent.getStringExtra("lect_name");
         dayOfWeek = intent.getStringExtra("day_of_week");
         chosedDate = intent.getStringExtra("chosed_date");
@@ -55,7 +57,7 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
         hashMap.put("lect_name",lect_name);
         hashMap.put("day_of_week",dayOfWeek);
 
-        test = new test(Request.Method.POST, url, hashMap, new Response.Listener<JSONObject>() {
+        customRequest = new CustomRequest(Request.Method.POST, url, hashMap, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 int count = 0;
@@ -70,6 +72,7 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
 
                     getFreeTimeSlots(freeTime);
 
+                    //radio button click event
                     radioGroup = (RadioGroup)findViewById(R.id.radiogroup);
                     Button button = (Button)findViewById(R.id.button);
                     button.setOnClickListener(new View.OnClickListener(){
@@ -88,7 +91,7 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
                                 radioButton = (RadioButton)findViewById(selectedId);
 
                                 StringTokenizer st1 = new StringTokenizer((String) radioButton.getText(),"-");
-                                chosedTime = st1.nextToken();  //tokenize selected time.Eg:11.30-12.00 => 11.30
+                                chosedTime = st1.nextToken();  //tokenize selected time.Eg:11:30 AM-12:00 PM => 11:30 AM
 
                                 btnClick();
 
@@ -110,7 +113,7 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
 
             }
         });
-        requestQueue.add(test);
+        requestQueue.add(customRequest);
 
     }
 
@@ -120,6 +123,7 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
         intent.putExtra("chosed_time",chosedTime);
         intent.putExtra("lect_name", lect_name);
         intent.putExtra("chosed_date",chosedDate);
+        intent.putExtra("user",user);
         this.startActivity(intent);
 
 
@@ -129,6 +133,7 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
 
     void getFreeTimeSlots(String pFreeTime){
 
+        //layout for radio buttons
         LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -144,28 +149,28 @@ public class ProvideAppointmentDetails_time extends AppCompatActivity {
 
             switch (st.nextToken())
             {
-                case "1": radioButtonString = "8.30-9.00";break;
-                case "2": radioButtonString = "9.00-9.30";break;
-                case "3": radioButtonString = "9.30-10.00";break;
-                case "4": radioButtonString = "10.00-10.30";break;
-                case "5": radioButtonString = "10.30-11.00";break;
-                case "6": radioButtonString = "11.00-11.30";break;
-                case "7": radioButtonString = "11.30-12.00";break;
-                case "8": radioButtonString = "12.00-12.30";break;
-                case "9": radioButtonString = "12.30-13.00";break;
-                case "10": radioButtonString = "13.00-13.30";break;
-                case "11": radioButtonString = "13.30-14.00";break;
-                case "12": radioButtonString = "14.00-14.30";break;
-                case "13": radioButtonString = "14.30-15.00";break;
-                case "14": radioButtonString = "15.00-15.30";break;
-                case "15": radioButtonString = "15.30-16.00";break;
-                case "16": radioButtonString = "16.00-16.30";break;
-                case "17": radioButtonString = "16.30-17.00";break;
-                case "18": radioButtonString = "17.00-17.30";break;
-                case "19": radioButtonString = "17.30-18.00";break;
-                case "20": radioButtonString = "18.00-18.30";break;
-                case "21": radioButtonString = "18.30-19.00";break;
-                case "22": radioButtonString = "19.00-19.30";break;
+                case "1": radioButtonString = "08:30 AM-09:00 AM";break;
+                case "2": radioButtonString = "09:00 AM-09:30 AM";break;
+                case "3": radioButtonString = "09:30 AM-10:00 AM";break;
+                case "4": radioButtonString = "10:00 AM-10:30 AM";break;
+                case "5": radioButtonString = "10:30 AM-11:00 AM";break;
+                case "6": radioButtonString = "11:00 AM-11:30 AM";break;
+                case "7": radioButtonString = "11:30 AM-12:00 PM";break;
+                case "8": radioButtonString = "12:00 PM-12:30 PM";break;
+                case "9": radioButtonString = "12:30 PM-01:00 PM";break;
+                case "10": radioButtonString = "01:00 PM-01:30 PM";break;
+                case "11": radioButtonString = "01:30 PM-102:00 PM";break;
+                case "12": radioButtonString = "02:00 PM-02:30 PM";break;
+                case "13": radioButtonString = "02:30 PM-03:00 PM";break;
+                case "14": radioButtonString = "03:00 PM-03:30 PM";break;
+                case "15": radioButtonString = "03:30 PM-04:00 PM";break;
+                case "16": radioButtonString = "04:00 PM-04:30 PM";break;
+                case "17": radioButtonString = "04:30 PM-15:00 PM";break;
+                case "18": radioButtonString = "05:00 PM-05:30 PM";break;
+                case "19": radioButtonString = "05:30 PM-06:00 PM";break;
+                case "20": radioButtonString = "06:00 PM-06:30 PM";break;
+                case "21": radioButtonString = "06:30 PM-07:00 PM";break;
+                case "22": radioButtonString = "07:00 PM-07:30 PM";break;
 
             }
 

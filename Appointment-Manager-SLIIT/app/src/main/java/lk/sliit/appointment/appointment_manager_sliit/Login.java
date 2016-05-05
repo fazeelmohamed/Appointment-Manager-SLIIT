@@ -149,6 +149,7 @@ public class Login extends AppCompatActivity {
                 }
                 else if(user.getUser_type()== 1) {
                     Intent intent = new Intent(context, StudentDashBoard.class);
+                    intent.putExtra("user",user);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 }

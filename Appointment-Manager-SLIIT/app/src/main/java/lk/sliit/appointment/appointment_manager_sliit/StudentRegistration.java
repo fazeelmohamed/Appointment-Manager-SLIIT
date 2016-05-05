@@ -101,9 +101,10 @@ public class StudentRegistration extends AppCompatActivity {
             BackgroundWorker bw = new BackgroundWorker(this);
             bw.execute(name, email, password, year, semester);
 
-            Intent intent = new Intent(this, StudentHome.class);
-            this.startActivity(intent);
+
         }
+        Intent intent = new Intent(this,StudentHome.class);
+        this.startActivity(intent);
     }
 
     public class BackgroundWorker extends AsyncTask<String,Void,String> {
@@ -187,6 +188,7 @@ public class StudentRegistration extends AppCompatActivity {
 
             //alertDialog.setMessage(result);
             //alertDialog.show();
+
             Toast.makeText(context, "Account created successfully.", Toast.LENGTH_SHORT).show();
         }
 

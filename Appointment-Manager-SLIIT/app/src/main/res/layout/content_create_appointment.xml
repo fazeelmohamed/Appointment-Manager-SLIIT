@@ -23,14 +23,28 @@
         android:spinnerMode="dropdown"
         android:layout_alignParentTop="true" />
 
-    <Spinner
+    <!--<Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spLecturer"
         android:layout_gravity="center_horizontal"
         android:spinnerMode="dropdown"
         android:layout_below="@+id/spSubject"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />-->
+    <RadioGroup
+        android:id="@+id/radiogroupLecturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/spSubject">
+
+    </RadioGroup>
+
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -38,15 +52,15 @@
         android:text="Check"
         android:id="@+id/btnCheck"
         android:onClick="onCheck"
-        android:layout_below="@+id/calendarView1"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <CalendarView
         android:layout_width="550dp"
         android:layout_height="310dp"
         android:id="@+id/calendarView1"
-        android:layout_below="@+id/spLecturer"
-        android:layout_alignRight="@+id/spLecturer"
-        android:layout_alignEnd="@+id/spLecturer" />
+        android:layout_above="@+id/btnCheck"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
