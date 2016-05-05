@@ -155,7 +155,7 @@ public class AdminTimeAllocate extends AppCompatActivity {
                                     dayArray[6] = response.getString("sun");*/
 
                                 //if(response.names().get(0).equals("successmsg")){
-                                Toast.makeText(getApplicationContext(),"SUCCESS "+response.getString("successmsg"),Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),""+response.getString("successmsg"),Toast.LENGTH_LONG).show();
                                 callAdminScheduleActivity2(lid,dayArray);
                                    /* }else{
                                         Toast.makeText(getApplicationContext(),"Error "+response.getString("error"),Toast.LENGTH_LONG).show();

@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/lightgreen_bg_color"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="lk.sliit.appointment.appointment_manager_sliit.StudentRegistration"
     tools:showIn="@layout/activity_student_registration">
@@ -88,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
+            android:background="@drawable/button_boarder"
             android:id="@+id/btnRegister"
             android:layout_gravity="center_horizontal"
             android:onClick="OnRegister" />

@@ -38,6 +38,7 @@ public class StudentRegistration extends AppCompatActivity {
     boolean status=true;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +108,7 @@ public class StudentRegistration extends AppCompatActivity {
             BackgroundWorker bw = new BackgroundWorker(this);
             bw.execute(name, email, password, year, semester);
 
-            Intent intent = new Intent(this,StudentHome.class);
+            Intent intent = new Intent(this,Login.class);
             this.startActivity(intent);
         }
 

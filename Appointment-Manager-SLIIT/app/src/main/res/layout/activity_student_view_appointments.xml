@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg"
+    android:background="@color/lightgreen_bg_color"
     tools:context="lk.sliit.appointment.appointment_manager_sliit.student_viewAppointments">
 
     <TextView
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
             android:text="Home"
-            android:background="@color/selector_color"
+            android:background="@drawable/button_boarder"
             android:onClick="btnGoHomeClick"
             android:id="@+id/btnGoHome" />
     </LinearLayout>
